@@ -13,11 +13,9 @@ $(`#buttons`).on('click', function (event) {
   });
 
   function weekDay() {
-    $(`#main`).text(planner[day]);
-    $(`#buttons`).empty();
-    for (let i = 0; i < planner[day].week.length; i++) {
-      $('#buttons').append(`<button class= "choose" data-choice= "${planner[day].week[i]}"
-  data-type='${planner[day].week[i]}'> ${planner[day].week[i]} </button>`);
+    for (let i = 0; i < planner.week.length; i++) {
+      $('#buttons').append(`<button class= "choose" data-choice= "${planner.week[i]}"
+  data-type='${planner.week[i]}'> ${planner.week[i]} </button>`);
     };
 
 
@@ -30,14 +28,16 @@ $(`#buttons`).on('click', function (event) {
   });
 
   function month() {
-    $(`#main`).text(planner[day]);
-    $(`#buttons`).empty();
-    for (let i = 0; i < planner[day].month.length; i++) {
-      $('#buttons').append(`<button class= "choose" data-choice= "${planner[day].month[i]}"
-  data-type='${planner[day].month[i]}'> ${planner[day].month[i]} </button>`);
+    for (let i = 0; i < planner.month.length; i++) {
+      $('#buttons').append(`<button class= "choose" data-choice= "${planner.month[i]}"
+  data-type='${planner.month[i]}'> ${planner.month[i]} </button>`);
     };
 
 
   };
+
+  mainEl.append(`Day of the Week: ${planner.week[i]}`);
+
+  mainEl.append(`Month: ${planner.month[i]}`);
 
  
