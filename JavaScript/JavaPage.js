@@ -1,37 +1,47 @@
-// let mainEl = document.getElementById("main");
+let weekEl = document.getElementById("weeks");
 
-// let buttons = document.getElementById("buttons");
+let monthEl = document.getElementById("months");
 
-// let day = 0
+let dayEl = document.getElementById("days");
 
-// day++;
+let buttons = document.getElementById("buttons");
 
-// $(`#buttons`).on('click', function (event) {
-//   event.preventDefault();
-//   weekDay();
+let dayWeekMonth = 0;
 
-// });
+dayWeekMonth++;
 
-// function weekDay() {
-//   for (let i = 0; i < planner[0].week.length; i++) {
-//     $('#buttons').append(`<button class= "choose" data-choice= "${planner[0].week[i]}"
-//   data-type='${planner[0].week[i]}'> ${planner[0].week[i]} </button>`);
-//   };
+mainEl.append(planner[dayWeekMonth].week);
 
+$(`#buttons`).on('click', function (event) {
+    event.preventDefault();
+    plannerEl();
 
-//   $(`#buttons`).on('click', function (event) {
-//     event.preventDefault();
-//     month();
+});
 
-//   });
+function plannerEl() {
+    $(`#main`).text(planner[dayWeekMonth].week);
+    $(`#buttons`).empty();
+    for (let i = 0; i < planner[dayWeekMonth].week; i++) {
+        $('#buttons').append(`<button class= "choose" data-choice= "${planner[dayWeekMonth].week}"'> ${planner[dayWeekMonth].week} </button>`)
 
-//   function month() {
-//     for (let i = 0; i < planner[1].month.length; i++) {
-//       $('#buttons').append(`<button class= "choose" data-choice= "${planner[1].month[i]}"
-//   data-type='${planner[1].month[i]}'> ${planner[1].month[i]} </button>`);
-//     };
+    };
+}
 
-//     $(`#main`).append(`Day of the Week: ${planner[0].week[i]}`);
+$('#buttons').on('click', '.choose', function (event) {
+    event.preventDefault();
+    var userChoice = $(this).attr('data-choice');
 
-//     $(`#main`).append(`Month: ${planner[1].month[i]}`);
+    alert(userChoice);
+    console.log(userChoice);
+
+    if (questionNum < questions.length - 1) {
+        questionNum++;
+        disQuestion();
+    }
+    else {
+
+        result();
+    }
+
+})
 
