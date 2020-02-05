@@ -1,24 +1,77 @@
-let calander = document.getElementsByClassName(`container`)
+let mainEl = document.getElementById("currentDay");
 
-moment().format('MMMM Do YYYY, h:mm:ss a');
+let choiceEl = document.getElementsByClassName("buttons");
 
-moment().format('dddd');   
+let plannerNum = 0;
 
-moment().format("MMM Do YY");
+var eventEl = JSON.parse(localStorage.getItem("data"));
 
-m
-  .format()
-  .format('dddd')
-  .format('MMM Do YY') // → "Sep 2nd 07"
-  .fromNow() // → "31 minutes ago"
-  .calendar() // → "Last Friday at 9:32PM"
+mainEl.append(planner[plannerNum]);
 
-m.add(1, 'day')
-m.subtract(2, 'days')
-m.startOf('day')
-m.endOf('day')
-m.startOf('hour')
+choiceEl.append(planner[plannerNum].button);
 
-.format('LLL')
-                                                     
+plannerNUm++;
 
+$(`#answerChoice`).on('click', function (event) {
+  event.preventDefault();
+  $('#main').hide();
+  $('#answerChoice').hide();
+
+  weekDay();
+  console.log(setTime());
+
+});
+
+function weekDay() {
+  $(`#quest`).text(planner[plannerNum].week);
+  $(`#buttons`).empty();
+  for (let i = 0; i < planner[plannerNum].week.length; i++) {
+    $('#buttons').append(`<button class= "choose" data-choice= "${planner[plannerNum].week[i]}"
+data-type='${planner[plannerNum].week}'> ${planner[plannerNum].week[i]} </button>`)
+
+
+  };
+}
+
+$('#buttons').on('click', '.choose', function (event) {
+  event.preventDefault();
+  var userChoice = $(this).attr('data-choice');
+
+  alert(userChoice);
+  console.log(userChoice);
+
+  if (plannerNum < planner.length - 1) {
+    plannerNum++;
+    disQuestion();
+  }
+  else {
+
+    result();
+  }
+
+})
+
+function result() {
+  console.log(wrongAnswer);
+  console.log(rightAnswer);
+  $(`#buttons`).empty();
+  
+}
+
+$(`.select`).click(function () {
+
+  let event = $(`#buttons`).val();
+
+  const scorer = {
+    event,
+    day,
+    month,
+  }
+
+  localStorage.setItem(`data`, JSON.stringify(scorer));
+
+});
+
+$(`.highScore`).text(`High-Score: ${initialsEl.initials} ${initialsEl.right} correct, and ${initialsEl.wrong} inncorrect with ${initialsEl.timeLeft} seconds left.`);
+
+console.log(initialsEl.initials)
