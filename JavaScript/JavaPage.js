@@ -1,14 +1,48 @@
-let mainEl = document.getElementById("currentDay");
+var currentTime = moment().hours();
 
-let choiceEl = document.getElementsByClassName("buttons");
+$("#currentDay").text(moment().format("MMM Do YYYY"))
 
-let plannerNum = 0;
+$(".saveBtn").on("click", function(event){
+event.preventDefault();
 
-var eventEl = JSON.parse(localStorage.getItem("data"));
+var dataInt =  $(this).siblings(".input").val();
+var timeInt = $(this).siblings(".time-block").text();
+console.log(dataInt);
+console.log(timeInt)
 
-mainEl.append(planner);
+localStorage.setItem(timeInt,dataInt);
 
-choiceEl.append(planner[plannerNum].button);
+});
+
+$(".row").each(function(){
+
+var time = $(this).children(".time-block").text();
+
+ var data = localStorage.getItem(time)
+
+$(this).children(".input").val(data);
+
+if (parseInt(time)>= 1 && parseInt(time)<= 10 && time.substr(-2)=="pm"){
+  time=parseInt(time) + 12;
+};
+
+if (currentTime >  parseInt(time) ){
+  $(this).children(".input").addClass("past");
+}
+else if (currentTime < parseInt(time)){
+  $(this).children(".input").addClass("future");
+}
+else {
+  $(this).children(".input").addClass("present");
+}
+
+console.log(time, data);
+
+});
+
+
+
+console.log(currentTime)
 
 // Work on CSS & Java
 // Make it look like image
