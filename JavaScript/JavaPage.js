@@ -6,7 +6,7 @@ let plannerNum = 0;
 
 var eventEl = JSON.parse(localStorage.getItem("data"));
 
-mainEl.append(planner[plannerNum]);
+mainEl.append(planner);
 
 choiceEl.append(planner[plannerNum].button);
 
