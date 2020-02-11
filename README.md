@@ -1,5 +1,7 @@
 # Homework5
 
+Description: a basic everyday planner for schedualing daily events.
+
     - This homework can be accssed here:
 
 https://github.com/Vavarooks/Homework5
