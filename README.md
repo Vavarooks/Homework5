@@ -17,5 +17,3 @@ https://vavarooks.github.io/Homework5/frontpage.html
     - The CSS holds touch ups to the HTML page.
 
     - THe HTML holds the bare bones of the page.
-
-*IGNORE THIS! THIS IS TO SEE IF THIS CAN FINNALY FIX ITSELF!!!!!!!!!*
